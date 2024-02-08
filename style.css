@@ -1,0 +1,9 @@
+ /* Ajoutez un style CSS pour rendre le captcha plus lisible et attrayant */
+ #captcha {
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    cursor: pointer;
+    user-select: none;
+  }

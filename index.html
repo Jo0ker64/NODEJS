@@ -1,16 +1,121 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Captcha Example</title>
+<link rel="stylesheet" href="style.css">
+   
+</head>
+<body>
+  <div id="captcha" onclick="refreshCaptcha()">  Appeler la fonction refreshCaptcha() lorsqu'on clique sur le captcha -->
+    <!-- Contenu du captcha généré dynamiquement 
+  </div>
+  <script src="./main.js"></script>
+</body>
+</html> -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="#" type="image/x-icon">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulaire avec Captcha</title>
+  <style>
+    /* Ajoutez un style CSS pour rendre le formulaire attrayant */
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    form {
+      width: 300px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+
+    #captcha {
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 5px;
+      cursor: pointer;
+      user-select: none;
+      margin-bottom: 16px;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
 <body>
-    <h1>HELLO, WORLD !!!</h1>
+  <form>
+    <label for="username">Nom d'utilisateur:</label>
+    <input type="text" id="username" name="username" required>
 
+    <label for="password">Mot de passe:</label>
+    <input type="password" id="password" name="password" required>
 
-    <script src="./serveur.js"></script>
-    <script src="main.js"></script>
+    <div id="captcha" onclick="refreshCaptcha()"> <!-- Appeler la fonction refreshCaptcha() lorsqu'on clique sur le captcha -->
+      <!-- Contenu du captcha généré dynamiquement -->
+    </div>
+
+    <label for="captchaInput">Entrez le Captcha:</label>
+    <input type="text" id="captchaInput" name="captchaInput" required>
+
+    <button type="submit">Soumettre</button>
+  </form>
+
+  <script>
+    function generateCaptcha() {
+      const captchaLength = 6;
+      const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+      let captcha = "";
+      for (let i = 0; i < captchaLength; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        captcha += characters.charAt(randomIndex);
+      }
+
+      return captcha;
+    }
+
+    function refreshCaptcha() {
+      const captchaElement = document.getElementById("captcha");
+      const newCaptcha = generateCaptcha();
+      captchaElement.textContent = newCaptcha;
+    }
+
+    window.onload = refreshCaptcha;
+  </script>
 </body>
 </html>
